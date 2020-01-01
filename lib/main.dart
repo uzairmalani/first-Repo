@@ -30,15 +30,15 @@ class _MyAppState extends State<MyApp> {
     var questions = [
       {
         'questionText': 'what\'s your Favourite color?',
-        'answer': ['Black', 'Red', 'Green', 'White'],
+        'answers': ['Black', 'Red', 'Green', 'White'],
       },
       {
         'questionText': 'what\'s your Favourite Animal?',
-        'answer': ['Rabit', 'Snack', 'Elephant', 'Lion'],
+        'answers': ['Rabit', 'Snack', 'Elephant', 'Lion'],
       },
       {
         'questionText': 'Who\'s your Favourite Instructor?',
-        'answer': ['Max', 'Max', 'Max', 'Max'],
+        'answers': ['Max', 'Max', 'Max', 'Max'],
       },
     ];
     return MaterialApp(
@@ -51,9 +51,9 @@ class _MyAppState extends State<MyApp> {
             Question(
               questions[_questionindex]['questionText'],
             ),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
+            ...(questions[_questionindex]['answers'] as List<String>).map((answer){
+            return Answer(_answerQuestion, answer);
+            }).toList()
           ],
         ),
       ),
